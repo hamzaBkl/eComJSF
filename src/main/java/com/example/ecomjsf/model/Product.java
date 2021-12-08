@@ -1,6 +1,7 @@
 package com.example.ecomjsf.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
@@ -84,4 +85,16 @@ public class Product implements Serializable{
         this.photo = photo;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product product = (Product) o;
+        return Objects.equals(idProduct, product.idProduct) && Objects.equals(designation, product.designation) && Objects.equals(selected, product.selected) && Objects.equals(price, product.price) && Objects.equals(quantity, product.quantity) && Objects.equals(photo, product.photo) && Objects.equals(category, product.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProduct, designation, selected, price, quantity, photo, category);
+    }
 }

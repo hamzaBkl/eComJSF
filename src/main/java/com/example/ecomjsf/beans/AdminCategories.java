@@ -92,12 +92,12 @@ public class AdminCategories implements Serializable{
 	      allCategories =getAllCategories();
 		}
 	
-	public List<Product> getCategoriyProducts() {
-		Category categ = categDao.getCategoryById(category);
-		categoryProducts = new ArrayList<Product>(categ.getProducts());
-		return categoryProducts;
-	}
-	
+//	public List<Product> getCategoriyProducts() {
+//		Category categ = categDao.getCategoryById(category);
+//		categoryProducts = new ArrayList<Product>(categ.getProducts());
+//		return categoryProducts;
+//	}
+//
 		
 	public List<Category> getAllCategories() {
 		allCategories = categDao.listCategories();

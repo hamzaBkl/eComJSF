@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.Proxy;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="category")
@@ -13,7 +14,20 @@ import java.util.List;
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Category category = (Category) o;
+        return Objects.equals(idCat, category.idCat) && Objects.equals(nameCat, category.nameCat) && Objects.equals(description, category.description) && Objects.equals(products, category.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCat, nameCat, description, products);
+    }
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idCat;
 	
