@@ -4,12 +4,16 @@ import com.example.ecomjsf.model.Category;
 import com.example.ecomjsf.model.Product;
 import com.example.ecomjsf.service.CategoryDAOImpl;
 import com.example.ecomjsf.service.ProductDAOImpl;
+import com.example.ecomjsf.util.UploadHelper;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,6 +32,24 @@ public class AdminProducts implements Serializable{
 	private Product selectedProduct;
 	private Product productToAdd= new Product();
 
+	private String photo = "";
+	private Part part;
+
+	public Part getPart() {
+		return part;
+	}
+
+	public void setPart(Part part) {
+		this.part = part;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	private int product;
 	private final ProductDAOImpl productDAO = new ProductDAOImpl();
@@ -71,11 +93,17 @@ public class AdminProducts implements Serializable{
 		if(productToAdd !=null) {
 			productToAdd.setCategory(categoryDAO.getCategoryById(idCategory));
 			productService.addProduct(productToAdd);
-			System.out.println("Ajout de la produit avec Succès");
-			addMessage(FacesMessage.SEVERITY_INFO, "Ajout Réussi", "Ajout de la produit avec Succès");
-		}else {
-			addMessage(FacesMessage.SEVERITY_WARN, "Ajout échoué", "Erreur lors de l'ajout de la produit");
-		}
+
+//			UploadHelper uploadHelper = new UploadHelper();
+//			this.photo = uploadHelper.processUpload(this.part);
+//			productToAdd.setPhoto(this.photo);
+
+
+				System.out.println("Ajout de la produit avec Succès");
+				addMessage(FacesMessage.SEVERITY_INFO, "Ajout Réussi", "Ajout de la produit avec Succès");
+			}else {
+				addMessage(FacesMessage.SEVERITY_WARN, "Ajout échoué", "Erreur lors de l'ajout de la produit");
+			}
 		addMode=false;
 	}
 	

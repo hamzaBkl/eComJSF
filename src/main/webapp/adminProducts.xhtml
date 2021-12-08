@@ -54,8 +54,10 @@
 							<h:outputText value="#{product.category.nameCat}" />
 						</p:column>
 						<p:column headerText="Photo">
-							<h:outputText value="#{product.photo}" />
+							<p:graphicImage value="#{product.photo}"/>
 						</p:column>
+
+
 
 
 
@@ -132,6 +134,8 @@
 								<f:selectItems value="#{adminProducts.allCategories}" var="category" itemValue="#{category.idCat}" itemLabel="#{category.nameCat}" />
 							</p:selectOneMenu>
 
+							<h:outputLabel value="Photo : " for="photo_add" />
+							<p:fileUpload id="photo_add" value="#{adminProducts.part}" mode="simple" skinSimple="true"/>
 
 
 							<p:commandButton id="btn_cancelAdd" value="Annuler"
