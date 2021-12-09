@@ -38,15 +38,8 @@ public class AdminCategories implements Serializable{
 	private boolean editMode = false;
 	private boolean addMode = false;
 
-	private PieChartModel pieModel;
 
-	public PieChartModel getPieModel() {
-		return pieModel;
-	}
 
-	public void setPieModel(PieChartModel pieModel) {
-		this.pieModel = pieModel;
-	}
 
 	private CategoryDAOImpl categService;
 	{
@@ -58,44 +51,8 @@ public class AdminCategories implements Serializable{
 	@PostConstruct
 	public void init(){
 		allCategories =getAllCategories();
-		createPieModel();
 	}
 
-	private void createPieModel() {
-		pieModel = new PieChartModel();
-		ChartData data = new ChartData();
-		List<String> labels = new ArrayList<>();
-
-		PieChartDataSet dataSet = new PieChartDataSet();
-		List<Number> values = new ArrayList<>();
-		List<String> bgColors = new ArrayList<>();
-
-		allCategories.forEach(category->{
-			labels.add(category.getNameCat());
-			int productsCount= category.getProducts().size();
-			values.add(productsCount);
-
-			Random rand = new Random();
-
-			float r = rand.nextInt(255);
-			float g = rand.nextInt(255);
-			float b = rand.nextInt(255);
-			bgColors.add("rgb("+r+","+g+","+b+")");
-
-		});
-
-
-//		bgColors.add("rgb(255, 99, 132)");
-//		bgColors.add("rgb(54, 162, 235)");
-//		bgColors.add("rgb(255, 205, 86)");
-		dataSet.setBackgroundColor(bgColors);
-
-		dataSet.setData(values);
-		data.addChartDataSet(dataSet);
-		data.setLabels(labels);
-
-		pieModel.setData(data);
-	}
 
 
 	public void edit(){

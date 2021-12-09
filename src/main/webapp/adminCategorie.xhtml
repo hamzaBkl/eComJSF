@@ -14,15 +14,6 @@
    <ui:define name="contenu">
 		<h:panelGrid>
 			<p:row>
-				<div class="p-grid">
-					<div class="p-col-12 p-lg-6 p-xl-4">
-						<div class="card">
-							<p:pieChart model="#{adminCategories.pieModel}" style="width: 100%; height: 500px;"/>
-						</div>
-					</div>
-				</div>
-			</p:row>
-			<p:row>
 				<h:form id="FormTableCategs">
 					<p:growl id="growl" showDetail="true" />
 					<p:dataTable id="tblCategs" filteredValue="#{adminCategories.filteredCategories}" var="categ" value="#{adminCategories.allCategories}"
@@ -99,15 +90,15 @@
 					<p:panel header="Ajout d'une Nouvelle Catégorie">
 						<h:panelGrid columns="2" id="grid">
 							<h:outputLabel value="Nom : *" for="txt_nameAdd" />
-							<p:inputText id="txt_nameAdd" value="#{adminCategories.categorieToAdd.nameCat}"
+							<p:inputText id="txt_nameAdd" value="#{adminCategories.categoryToAdd.nameCat}"
 								required="true" />
 							<h:outputLabel value="Description : *" for="txt_descAdd" />
-							<p:inputText id="txt_descAdd" value="#{adminCategories.categorieToAdd.description}"
+							<p:inputText id="txt_descAdd" value="#{adminCategories.categoryToAdd.description}"
 									required="true" />
 							<p:commandButton id="btn_cancelAdd" value="Annuler"
 							action="#{adminCategories.cancelAdd}" immediate="true" ajax="false"/>
 							<p:commandButton id="btn_add" value="Ajouter"
-								action="#{adminCategories.addCategorie}" ajax="false"/>
+								action="#{adminCategories.addCategory}" ajax="false"/>
 						</h:panelGrid>
 					</p:panel>
 				</h:form>

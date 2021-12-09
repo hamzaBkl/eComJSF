@@ -50,7 +50,13 @@
 						<p:column headerText="Quantite">
 							<h:outputText value="#{product.quantity}" />
 						</p:column>
-						<p:column headerText="Categorie">
+						<p:column headerText="Categorie" filterBy="#{product.category.nameCat}" filterMatchMode="in">
+							<f:facet name="filter">
+								<p:selectCheckboxMenu label="Categories" onchange="PF('productsTable').filter()" scrollHeight="150">
+									<f:selectItems value="#{adminProducts.allCategories}" var="category" itemValue="#{category.nameCat}" itemLabel="#{category.nameCat}" />
+
+								</p:selectCheckboxMenu>
+							</f:facet>
 							<h:outputText value="#{product.category.nameCat}" />
 						</p:column>
 						<p:column headerText="Photo">

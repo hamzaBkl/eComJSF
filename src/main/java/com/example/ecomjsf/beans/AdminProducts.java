@@ -191,6 +191,8 @@ public class AdminProducts implements Serializable{
 	}
 
 	public List<Category> getAllCategories() {
+		allCategories=categoryDAO.listCategories();
+
 		return allCategories;
 	}
 
