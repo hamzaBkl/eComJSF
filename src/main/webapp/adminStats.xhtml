@@ -1,0 +1,27 @@
+<ui:composition 
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+	template="./index.xhtml">
+	
+	<ui:define name="title">
+   		Administration : <ui:insert name="adminTitle">Statistics</ui:insert>
+   	</ui:define>
+   	
+   <ui:define name="contenu">
+	   <div class="p-grid">
+		   <div class="p-col-12 p-lg-6 p-xl-4">
+			   <div class="card">
+				   <p:pieChart model="#{stats.pieModel}" style="width: 100%; height: 500px;"/>
+			   </div>
+		   </div>
+	   </div>
+	   <div class="card">
+		   <h5>Basic</h5>
+		   <p:barChart model="#{stats.barModel}" style="width: 100%; height: 500px;"/>
+	   </div>
+
+	</ui:define>
+</ui:composition>
