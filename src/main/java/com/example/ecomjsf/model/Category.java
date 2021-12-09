@@ -34,7 +34,7 @@ public class Category implements Serializable {
     private String nameCat;
     private String description;
 
-	@OneToMany(mappedBy="category")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Product> products;
 	
     public Category() {

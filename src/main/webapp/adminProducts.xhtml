@@ -19,7 +19,7 @@
 						 resizableColumns="true"
 						 editable="true"
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-						paginator="true" rows="5" style="margin-bottom:20px"
+						paginator="true" rows="20" style="margin-bottom:20px"
 						selection="#{adminProducts.selectedProduct}" rowKey="#{product.idProduct}"
 						emptyMessage="Aucune Produit enregistrée"
 						widgetVar="productsTable">
@@ -113,7 +113,7 @@
 
 			</p:row>
 			<p:row id="rowNew" >
-				<h:form id="formNew" rendered="#{adminProducts.addMode}">
+				<h:form id="formNew" rendered="#{adminProducts.addMode}" enctype="multipart/form-data">
 					<p:growl id="msgs" />
 					<p:panel header="Ajout d'une Nouvelle Produit">
 						<h:panelGrid columns="2" id="grid">

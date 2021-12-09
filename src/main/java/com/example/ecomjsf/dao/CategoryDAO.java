@@ -10,5 +10,6 @@ public interface CategoryDAO {
 	List<Category> listCategories();
 	List<Category> selectCatByKeyword(String keyWord);
 	Category getCategoryById(long id);
+
 	void removeCategory(long id);
 }

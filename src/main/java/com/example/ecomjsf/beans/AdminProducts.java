@@ -92,12 +92,12 @@ public class AdminProducts implements Serializable{
 		
 		if(productToAdd !=null) {
 			productToAdd.setCategory(categoryDAO.getCategoryById(idCategory));
+
+			UploadHelper uploadHelper = new UploadHelper();
+			this.photo = uploadHelper.processUpload(this.part);
+			productToAdd.setPhoto(this.photo);
+
 			productService.addProduct(productToAdd);
-
-//			UploadHelper uploadHelper = new UploadHelper();
-//			this.photo = uploadHelper.processUpload(this.part);
-//			productToAdd.setPhoto(this.photo);
-
 
 				System.out.println("Ajout de la produit avec Succès");
 				addMessage(FacesMessage.SEVERITY_INFO, "Ajout Réussi", "Ajout de la produit avec Succès");

@@ -26,8 +26,8 @@ public class UploadHelper {
                     } else {
                         String currentFileName = submittedFileName;
                         String extension = currentFileName.substring(currentFileName.lastIndexOf("."), currentFileName.length());
-                        Long nameRadom = Calendar.getInstance().getTimeInMillis();
-                        String newfilename = nameRadom + extension;
+                        Long nameRandom = Calendar.getInstance().getTimeInMillis();
+                        String newfilename = nameRandom + extension;
                         fileSaveData = newfilename;
                         String fileSavePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("") + this.path_to;
                         try {
